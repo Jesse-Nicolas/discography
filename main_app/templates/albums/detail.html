@@ -22,6 +22,10 @@
     <h5>by {{ album.artist }}</h5>
   {% endif %}
   <p>{{ album.description }}</p>
+  <div class='album-actions'>
+    <a href="{% url 'albums_update' album.id %}" class='btn warn'>Edit</a>
+    <a href="{% url 'albums_delete' album.id %}" class='btn danger'>Delete</a>
+  </div>
 </section>
 
 {% endblock %}

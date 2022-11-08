@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Album
 
 
@@ -17,3 +17,15 @@ def albums_index(request):
 def albums_detail(request, album_id):
   album = Album.objects.get(id=album_id)
   return render(request, 'albums/detail.html', { 'album': album })
+
+class AlbumAdd(CreateView):
+  model = Album
+  fields = '__all__'
+
+class AlbumUpdate(UpdateView):
+  model = Album
+  fields = ['description', 'genre']
+
+class AlbumDelete(DeleteView):
+  model = Album
+  success_url = '/albums/'
