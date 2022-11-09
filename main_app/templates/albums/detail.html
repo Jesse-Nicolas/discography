@@ -50,24 +50,61 @@
     <button type='submit' class='btn sumbit'>Add Listen</button>
   </form>
 
-  {% if album.listen_set.all.count %}
-    <h2>Listens</h2>
-    <table>
-      <thead>
-        <tr><th>Date</th><th>Impressions</th></tr>
-      </thead>
-      <tbody>
-        {% for listen in album.listen_set.all %}
-          <tr>
-            <td>{{ listen.date }}</td>
-            <td>{{ listen.impressions }}</td>
-          </tr>
+  <div class='listens-container'>
+    {% if album.listen_set.all.count %}
+      <h2>Listens</h2>
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Impressions</th></tr>
+        </thead>
+        <tbody>
+          {% for listen in album.listen_set.all %}
+            <tr>
+              <td>{{ listen.date }}</td>
+              <td>{{ listen.impressions }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <h3>Give this album a relisten and record your thoughts!</h3>
+    {% endif %}
+  </div>
+
+  <div class='vibes-container'>
+    <h2>{{ album.title }}'s Vibes</h2>
+    {% if album.vibes.count %}
+      {% for vibe in album.vibes.all %}
+        <div class='vibe-container'>
+          <a href="{% url 'vibes_detail' vibe.id %}">
+            <p>A {{vibe.name}} vibe</p>
+          </a>
+        </div>
+      {% endfor %}
+    {% else %}
+        <p>{{album.artist}}'s <strong>{{album.title}}</strong> hasn't been assigned any vibes :/</p>
+    {% endif %}
+    <div class='vibe-adder'>
+      <h3>Available Vibes</h3>
+      {% if vibes.count %}
+        {% for vibe in vibes.all %}
+
+          <div class='vibe-container'>
+            <a href="{% url 'vibes_detail' vibe.id %}">
+              <p>A {{vibe.name}} vibe</p>
+            </a>
+            <form action="{% url 'assoc_vibe' album.id vibe.id %}" method='post'>
+              {% csrf_token %}
+              <button type='submit' class='btn submit'>Add Vibe</button>
+            </form>
+          </div>
+
         {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <h3>Give this album a relisten and record your thoughts!</h3>
-  {% endif %}
+      {% else %}
+        <p>You've added all your vibes already!</p>
+      {% endif %}
+    </div>
+  </div>
 
 </section>
 

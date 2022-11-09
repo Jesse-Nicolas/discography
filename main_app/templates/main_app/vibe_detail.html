@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/toys/toy-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+  
+<div class="card">
+  <div class='card_content'>
+    <p>issa vibe:</p>
+    <h2>{{ vibe.name }}</h2>
+  </div>
+</div>
+<a href="{% url 'vibes_update' vibe.id %}" class='btn warn'>Edit</a>
+<a href="{% url 'vibes_delete' vibe.id %}" class='btn danger'>Delete</a>
+{% endblock %}

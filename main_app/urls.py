@@ -10,4 +10,10 @@ urlpatterns = [
   path('albums/<int:pk>/update', views.AlbumUpdate.as_view(), name='albums_update'),
   path('albums/<int:pk>/delete', views.AlbumDelete.as_view(), name='albums_delete'),
   path('albums/<int:album_id>/add_listen/', views.add_listen, name='add_listen'),
+  path('vibes/create', views.VibeCreate.as_view(), name='vibes_create'),
+  path('vibes/<int:pk>/', views.VibeDetail.as_view(), name='vibes_detail'),
+  path('vibes/', views.VibeList.as_view(), name='vibes_index'),
+  path('vibes/<int:pk>/update/', views.VibeUpdate.as_view(), name='vibes_update'),
+  path('vibes/<int:pk>/delete/', views.VibeDelete.as_view(), name='vibes_delete'),
+  path('albums/<int:album_id>/assoc_vibe/<int:vibe_id>/', views.assoc_vibe, name='assoc_vibe')
 ]
