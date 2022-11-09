@@ -1,4 +1,4 @@
-.album-detials {
+.album-details {
   padding: 35px 30px;
   display: flex;
   flex-direction: column;
@@ -6,10 +6,7 @@
   justify-content: center;
 }
 
-.cat-img {
-  width: 75%;
-  max-width: 350px;
-}
+
 
 .usr-img {
   width: 100%;
@@ -20,7 +17,7 @@
   width: 98%;
 }
 
-.cat-actions {
+.album-actions {
   margin-top: 20px;
 }
 

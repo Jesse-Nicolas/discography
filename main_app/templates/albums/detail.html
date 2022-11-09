@@ -3,10 +3,20 @@
 
 {% block head %}
 <link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/albums/album-detail.css' %}"
 />
+<script defer src="{% static 'js/album-detail.js' %}"></script>
 {% endblock %}
 
 
@@ -26,6 +36,39 @@
     <a href="{% url 'albums_update' album.id %}" class='btn warn'>Edit</a>
     <a href="{% url 'albums_delete' album.id %}" class='btn danger'>Delete</a>
   </div>
+</section>
+
+<section class='listens-container'>
+
+  <h3>Add a Listen</h3>
+  <form 
+    method='post'
+    class='listen-form'
+    action="{% url 'add_listen' album.id %}" >
+    {% csrf_token %}
+    {{ listen_form.as_p }}
+    <button type='submit' class='btn sumbit'>Add Listen</button>
+  </form>
+
+  {% if album.listen_set.all.count %}
+    <h2>Listens</h2>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Impressions</th></tr>
+      </thead>
+      <tbody>
+        {% for listen in album.listen_set.all %}
+          <tr>
+            <td>{{ listen.date }}</td>
+            <td>{{ listen.impressions }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <h3>Give this album a relisten and record your thoughts!</h3>
+  {% endif %}
+
 </section>
 
 {% endblock %}

@@ -14,4 +14,13 @@ class Album(models.Model):
   
   def get_absolute_url(self):
       return reverse("albums_detail", kwargs={"album_id": self.id})
-  
+
+
+# One album can have many listens (1:M)
+class Listen(models.Model):
+  date = models.DateField('Listening Date')
+  impressions = models.TextField()
+  album = models.ForeignKey(Album, on_delete=models.CASCADE)
+
+  class Meta:
+    ordering = ['-date']
