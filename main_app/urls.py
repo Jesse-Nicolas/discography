@@ -16,5 +16,6 @@ urlpatterns = [
   path('vibes/<int:pk>/update/', views.VibeUpdate.as_view(), name='vibes_update'),
   path('vibes/<int:pk>/delete/', views.VibeDelete.as_view(), name='vibes_delete'),
   path('albums/<int:album_id>/assoc_vibe/<int:vibe_id>/', views.assoc_vibe, name='assoc_vibe'),
+  path('albums/<int:album_id>/disassoc_vibe/<int:vibe_id>/', views.disassoc_vibe, name='disassoc_vibe'),
   path('accounts/signup/', views.signup, name='signup'),
 ]

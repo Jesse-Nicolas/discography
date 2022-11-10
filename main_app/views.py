@@ -57,6 +57,11 @@ def assoc_vibe(request, album_id, vibe_id):
   Album.objects.get(id=album_id).vibes.add(vibe_id)
   return redirect('albums_detail', album_id=album_id)
 
+@login_required
+def disassoc_vibe(request, album_id, vibe_id):
+  Album.objects.get(id=album_id).vibes.remove(vibe_id)
+  return redirect('albums_detail', album_id=album_id)
+
 class AlbumAdd(LoginRequiredMixin, CreateView):
   model = Album
   fields = ['title', 'artist', 'genre', 'description', 'released']

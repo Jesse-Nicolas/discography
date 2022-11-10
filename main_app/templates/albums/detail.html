@@ -72,13 +72,19 @@
   <div class='vibes-container'>
     <h2>{{ album.title }}'s Vibes</h2>
     {% if album.vibes.count %}
-      {% for vibe in album.vibes.all %}
-        <div class='vibe-container'>
-          <a href="{% url 'vibes_detail' vibe.id %}">
-            <h2>A {{vibe.name}} vibe</h2>
-          </a>
-        </div>
-      {% endfor %}
+      <div class='vibe-container'>
+        {% for vibe in album.vibes.all %}
+          <div class='vibe-card'>
+            <a href="{% url 'vibes_detail' vibe.id %}">
+              <p>A {{vibe.name}} vibe</p>
+            </a>
+            <form action="{% url 'disassoc_vibe' album.id vibe.id %}" method='post'>
+              {% csrf_token %}
+              <button type='submit'><i class="fa-solid fa-minus"></i></button>
+            </form>
+          </div>
+        {% endfor %}
+      </div>
     {% else %}
         <p>{{album.artist}}'s <strong>{{album.title}}</strong> hasn't been assigned any vibes :/</p>
     {% endif %}
