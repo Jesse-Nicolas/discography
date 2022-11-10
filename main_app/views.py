@@ -15,7 +15,7 @@ def about(request):
   return render(request, 'about.html')
 
 def albums_index(request):
-  albums = Album.objects.all()
+  albums = request.user.album_set.all()
   return render(request, 'albums/index.html', { 'albums': albums })
 
 def albums_detail(request, album_id):
