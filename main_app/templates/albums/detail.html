@@ -40,14 +40,14 @@
 
 <section class='vibes-listens-container'>
   <div class='listens-container'>
-    <h2>record your thoughts</h2>
     <form 
-      method='post'
-      class='listen-form'
-      action="{% url 'add_listen' album.id %}" >
-      {% csrf_token %}
-      {{ listen_form.as_p }}
-      <button type='submit' class='btn sumbit'>Add Listen</button>
+    method='post'
+    class='listen-form'
+    action="{% url 'add_listen' album.id %}" >
+    {% csrf_token %}
+    <h2>record your thoughts</h2>
+    {{ listen_form.as_p }}
+      <button type='submit' class='btn sumbit'>Submit</button>
     </form>
     {% if album.listen_set.all.count %}
       <h2>past listens</h2>
@@ -65,7 +65,7 @@
         </tbody>
       </table>
     {% else %}
-      <h3>Give this album a relisten and record your thoughts!</h3>
+      <h3>Give this album a relisten and record what you think!</h3>
     {% endif %}
   </div>
 
@@ -92,7 +92,7 @@
             </a>
             <form action="{% url 'assoc_vibe' album.id vibe.id %}" method='post'>
               {% csrf_token %}
-              <button type='submit' class='btn submit'>that's it!</button>
+              <button type='submit'><i class="fa-solid fa-plus"></i></button>
             </form>
           </div>
         {% endfor %}
