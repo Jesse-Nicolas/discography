@@ -82,8 +82,8 @@
     {% else %}
         <p>{{album.artist}}'s <strong>{{album.title}}</strong> hasn't been assigned any vibes :/</p>
     {% endif %}
+    <h3>vibes from the community</h3>
     <div class='vibe-adder'>
-      <h3>Available Vibes</h3>
       {% if vibes.count %}
         {% for vibe in vibes.all %}
           <div class='vibe-card'>

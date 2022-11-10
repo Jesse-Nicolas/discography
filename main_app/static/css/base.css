@@ -154,10 +154,6 @@ nav li {
   /* margin-left:15px; */
 }
 
-.page-header img:first-of-type {
-  /* margin-left: 20px; */
-}
-
 .page-content {
   font-size: var(--font-reg);
 }

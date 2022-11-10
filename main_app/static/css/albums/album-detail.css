@@ -30,24 +30,36 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: var(--nav-bg-ff);
+  border: var(--borders);
+  border-radius: 5px;
+  padding: 15px;
 }
 
 .vibes-container {
   display: flex;
   flex-direction: column;
+  align-items:flex-start;
   justify-content: center;
+  background-color: var(--nav-bg-ff);
+  background-color: var(--nav-bg-ff);
+  border: var(--borders);
+  border-radius: 5px;
+  padding: 15px;
 }
 
 .vibe-adder {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .vibe-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 .subsection-title {
