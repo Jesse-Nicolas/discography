@@ -28,11 +28,18 @@
     </div>
     <nav>
       <ul>
-        <li><a href="{% url 'about' %}">About</a></li>
-        <li><a href="{% url 'albums_index' %}">All Albums</a></li>
-        <li><a href="{% url 'albums_add' %}">Add an album</a></li>
-        <li><a href="{% url 'vibes_create' %}">Add a Vibe</a></li>
-        <li><a href="{% url 'vibes_index' %}">All Vibes</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'albums_index' %}">All Albums</a></li>
+          <li><a href="{% url 'albums_add' %}">Add an album</a></li>
+          <li><a href="{% url 'vibes_create' %}">Add a Vibe</a></li>
+          <li><a href="{% url 'vibes_index' %}">All Vibes</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'home' %}">Login</a></li>
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>

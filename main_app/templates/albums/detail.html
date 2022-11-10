@@ -77,7 +77,7 @@
       {% for vibe in album.vibes.all %}
         <div class='vibe-container'>
           <a href="{% url 'vibes_detail' vibe.id %}">
-            <p>A {{vibe.name}} vibe</p>
+            <h3>A {{vibe.name}} vibe</h3>
           </a>
         </div>
       {% endfor %}

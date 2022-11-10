@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Vibe(models.Model):
@@ -21,6 +23,7 @@ class Album(models.Model):
   description = models.TextField()
   released = models.IntegerField('year released', help_text='Enter a four-digit year')
   vibes = models.ManyToManyField(Vibe)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.title
