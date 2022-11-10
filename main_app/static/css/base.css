@@ -94,6 +94,7 @@ nav li {
 }
 
 .header-logo-container {
+  display: flex;
   margin: 10px 0;
   padding: 10px 20px 0;
   max-width: 500px;
@@ -150,11 +151,11 @@ nav li {
 
 .page-header img {
   height: 40px;
-  margin-left:15px;
+  /* margin-left:15px; */
 }
 
 .page-header img:first-of-type {
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 
 .page-content {

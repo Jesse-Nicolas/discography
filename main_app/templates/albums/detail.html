@@ -38,21 +38,19 @@
   </div>
 </section>
 
-<section class='listens-container'>
-
-  <h3>Add a Listen</h3>
-  <form 
-    method='post'
-    class='listen-form'
-    action="{% url 'add_listen' album.id %}" >
-    {% csrf_token %}
-    {{ listen_form.as_p }}
-    <button type='submit' class='btn sumbit'>Add Listen</button>
-  </form>
-
+<section class='vibes-listens-container'>
   <div class='listens-container'>
+    <h2>record your thoughts</h2>
+    <form 
+      method='post'
+      class='listen-form'
+      action="{% url 'add_listen' album.id %}" >
+      {% csrf_token %}
+      {{ listen_form.as_p }}
+      <button type='submit' class='btn sumbit'>Add Listen</button>
+    </form>
     {% if album.listen_set.all.count %}
-      <h2>Listens</h2>
+      <h2>past listens</h2>
       <table>
         <thead>
           <tr><th>Date</th><th>Impressions</th></tr>
@@ -77,7 +75,7 @@
       {% for vibe in album.vibes.all %}
         <div class='vibe-container'>
           <a href="{% url 'vibes_detail' vibe.id %}">
-            <h3>A {{vibe.name}} vibe</h3>
+            <h2>A {{vibe.name}} vibe</h2>
           </a>
         </div>
       {% endfor %}
@@ -88,17 +86,15 @@
       <h3>Available Vibes</h3>
       {% if vibes.count %}
         {% for vibe in vibes.all %}
-
-          <div class='vibe-container'>
+          <div class='vibe-card'>
             <a href="{% url 'vibes_detail' vibe.id %}">
               <p>A {{vibe.name}} vibe</p>
             </a>
             <form action="{% url 'assoc_vibe' album.id vibe.id %}" method='post'>
               {% csrf_token %}
-              <button type='submit' class='btn submit'>Add Vibe</button>
+              <button type='submit' class='btn submit'>that's it!</button>
             </form>
           </div>
-
         {% endfor %}
       {% else %}
         <p>You've added all your vibes already!</p>
