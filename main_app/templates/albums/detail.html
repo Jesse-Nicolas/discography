@@ -44,9 +44,9 @@
     method='post'
     class='listen-form'
     action="{% url 'add_listen' album.id %}" >
-    {% csrf_token %}
-    <h2>record your thoughts</h2>
-    {{ listen_form.as_p }}
+      {% csrf_token %}
+      <h2>record your thoughts</h2>
+      {{ listen_form.as_table }}
       <button type='submit' class='btn sumbit'>Submit</button>
     </form>
     {% if album.listen_set.all.count %}
@@ -68,7 +68,6 @@
       <h3>Give this album a relisten and record what you think!</h3>
     {% endif %}
   </div>
-
   <div class='vibes-container'>
     <h2>{{ album.title }}'s Vibes</h2>
     {% if album.vibes.count %}
@@ -89,7 +88,7 @@
         <p>{{album.artist}}'s <strong>{{album.title}}</strong> hasn't been assigned any vibes :/</p>
     {% endif %}
     <h3>vibes from the community</h3>
-    <div class='vibe-adder'>
+    <div class='vibe-container'>
       {% if vibes.count %}
         {% for vibe in vibes.all %}
           <div class='vibe-card'>
@@ -103,11 +102,10 @@
           </div>
         {% endfor %}
       {% else %}
-        <p>You've added all your vibes already!</p>
+        <p>You've added all the vibes already!</p>
       {% endif %}
     </div>
   </div>
-
 </section>
 
 {% endblock %}
